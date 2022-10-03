@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    ubuntu:
+        build :
+            context : ./environment/ubuntu
+            dockerfile : Dockerfile
+            args: 
+                USER_NAME: $USER_NAME
+                USER_ID: $USER_ID
+                GROUP_ID: $GROUP_ID
+        volumes:
+            - ./workspace:/home/${USER_NAME}/workspace
+            - ./environment/ubuntu/volume/japanese_bart_base_2.0:/home/${USER_NAME}/workspace/japanese_bart_base_2.0
+        tty: true
